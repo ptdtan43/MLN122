@@ -234,7 +234,7 @@ export default function Game() {
     );
 
     return (
-        <div className={`w-full max-w-md mx-auto bg-slate-800/90 backdrop-blur rounded-3xl shadow-2xl overflow-hidden border border-slate-700 p-6 relative transition-colors ${flash ? 'bg-red-900/40' : ''}`}>
+        <div className={`w-full max-w-lg mx-auto bg-slate-800/90 backdrop-blur rounded-3xl shadow-2xl overflow-hidden border border-slate-700 p-4 sm:p-6 relative transition-colors ${flash ? 'bg-red-900/40' : ''}`}>
             {/* Banner chuyển phase */}
             {banner && (
                 <div className="absolute inset-0 z-30 flex items-center justify-center bg-black/70 rounded-3xl animate-[fadeIn_.2s_ease]">
@@ -259,7 +259,7 @@ export default function Game() {
                     <div className="text-5xl">🏭⚔️👑</div>
                     <h1 className="text-2xl font-black bg-gradient-to-r from-red-500 to-orange-400 bg-clip-text text-transparent uppercase tracking-wider">Đại Chiến Độc Quyền</h1>
                     <p className="text-xs text-slate-400">Chương 4 · 4.1 Cạnh tranh ở cấp độ độc quyền & 4.2 Đặc điểm kinh tế của độc quyền (Lênin)</p>
-                    <div className="bg-slate-700/40 p-4 rounded-xl text-left text-[11px] space-y-1.5 text-slate-300">
+                    <div className="bg-slate-700/40 p-3 sm:p-4 rounded-xl text-left text-[11px] space-y-1.5 text-slate-300">
                         <p className="font-bold text-yellow-400">⚔️ LUẬT CHƠI:</p>
                         <p>• Boss có <strong>3 GIAI ĐOẠN</strong>: Tổ chức Độc quyền → Tư bản Tài chính → Độc quyền Nhà nước.</p>
                         <p>• Mỗi GĐ Boss mạnh hơn; hạ xong 1 GĐ được <strong>thưởng +80 HP</strong>.</p>
@@ -268,9 +268,9 @@ export default function Game() {
                     </div>
                     <form onSubmit={startGame} className="space-y-3">
                         <input type="text" placeholder="Nhập tên Nhóm..."
-                            className="w-full px-4 py-3 bg-slate-900 border border-slate-600 rounded-xl focus:outline-none focus:border-red-500 text-center font-bold text-white"
+                            className="w-full px-4 py-3 bg-slate-900 border border-slate-600 rounded-xl focus:outline-none focus:border-red-500 text-center font-bold text-white text-sm"
                             value={teamName} onChange={(e) => setTeamName(e.target.value)} required />
-                        <button type="submit" className="w-full py-3 bg-gradient-to-r from-red-600 to-orange-600 hover:opacity-90 font-bold rounded-xl transition shadow-lg shadow-red-600/30 text-white">
+                        <button type="submit" className="w-full py-3 sm:py-4 bg-gradient-to-r from-red-600 to-orange-600 hover:opacity-90 font-bold rounded-xl transition shadow-lg shadow-red-600/30 text-white text-sm sm:text-base">
                             VÀO TRẬN
                         </button>
                     </form>
@@ -319,10 +319,10 @@ export default function Game() {
                     {/* HAND */}
                     <div className="space-y-2">
                         <h3 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Vũ khí lý luận (chọn 1 để đánh)</h3>
-                        <div className="grid grid-cols-1 gap-2 max-h-52 overflow-y-auto pr-1">
+                        <div className="grid grid-cols-1 gap-2 max-h-48 sm:max-h-56 overflow-y-auto pr-1">
                             {hand.map((card) => (
                                 <button key={card.instanceId} onClick={() => playCard(card)}
-                                    className={`w-full text-left p-3 rounded-xl transition transform hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-between bg-gradient-to-r ${card.color} text-white shadow-md`}>
+                                    className={`w-full text-left p-3 sm:p-3 rounded-xl transition transform hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-between bg-gradient-to-r ${card.color} text-white shadow-md min-h-[52px]`}>
                                     <div className="pr-2">
                                         <div className="font-bold text-sm flex items-center gap-1.5">
                                             <span className="bg-black/30 text-[9px] px-1.5 py-0.5 rounded">{card.tag}</span>{card.name}
@@ -340,7 +340,7 @@ export default function Game() {
                     {/* LOG */}
                     <div className="space-y-1">
                         <h3 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Nhật ký chiến sự</h3>
-                        <div ref={logRef} className="bg-slate-900 p-3 rounded-xl h-24 overflow-y-auto text-[11px] font-mono space-y-1 text-slate-300">
+                        <div ref={logRef} className="bg-slate-900 p-3 rounded-xl h-20 sm:h-24 overflow-y-auto text-[11px] font-mono space-y-1 text-slate-300">
                             {log.map((item, idx) => (
                                 <div key={idx} className={idx === 0 ? 'text-yellow-400 font-bold' : ''}>{item}</div>
                             ))}
@@ -368,7 +368,7 @@ export default function Game() {
                         <p>2. Tư bản tài chính & đầu sỏ tài chính</p>
                         <p>3. Xuất khẩu tư bản · 4. Phân chia thế giới về kinh tế · 5. Về lãnh thổ</p>
                     </div>
-                    <button onClick={resetGame} className="w-full py-2 bg-slate-700 hover:bg-slate-600 font-bold rounded-xl text-sm text-white">CHƠI LẠI</button>
+                    <button onClick={resetGame} className="w-full py-3 bg-slate-700 hover:bg-slate-600 font-bold rounded-xl text-sm text-white min-h-[48px]">CHƠI LẠI</button>
                 </div>
             )}
 
@@ -378,7 +378,7 @@ export default function Game() {
                     <div className="text-6xl">💀</div>
                     <h2 className="text-2xl font-black text-red-500 uppercase">Thất bại</h2>
                     <p className="text-sm text-slate-300">Bạn đã trụ tới <strong className="text-purple-300">{phase.name}</strong>. Hãy ôn lại 4.1 & 4.2 rồi phản công!</p>
-                    <button onClick={resetGame} className="w-full py-3 bg-slate-700 hover:bg-slate-600 font-bold rounded-xl transition text-white">THỬ LẠI</button>
+                    <button onClick={resetGame} className="w-full py-3 bg-slate-700 hover:bg-slate-600 font-bold rounded-xl transition text-white min-h-[48px]">THỬ LẠI</button>
                 </div>
             )}
 

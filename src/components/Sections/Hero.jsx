@@ -14,13 +14,13 @@ export default function Hero({ onStart }) {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.2, duration: 0.8 }}
-          className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-accent-cyan font-bold tracking-[0.15em] uppercase text-[10px] md:text-xs mb-8"
+          className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-accent-cyan font-bold tracking-[0.1em] md:tracking-[0.15em] uppercase text-[10px] md:text-xs mb-6 md:mb-8"
         >
           <span className="w-1.5 h-1.5 rounded-full bg-accent-cyan animate-pulse" />
           Giáo trình Kinh tế Chính trị Mác-Lênin
         </motion.div>
         
-        <h1 className="text-6xl md:text-8xl lg:text-9xl font-black text-gradient-white leading-[0.9] mb-8 select-none">
+        <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-black text-gradient-white leading-[0.9] mb-6 md:mb-8 select-none">
           Đại Chiến<br />Độc Quyền
         </h1>
         
@@ -28,7 +28,7 @@ export default function Hero({ onStart }) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4, duration: 0.8 }}
-          className="max-w-xl mx-auto text-slate-400 text-base md:text-lg mb-12 leading-relaxed font-medium"
+          className="max-w-xl mx-auto text-slate-400 text-sm md:text-base lg:text-lg mb-8 md:mb-12 leading-relaxed font-medium px-2"
         >
           Chương 4: Từ Tự do Cạnh tranh đến Chủ nghĩa Tư bản Độc quyền. 
           Hành trình lịch sử của sự tập trung sản xuất và sức mạnh tài chính.
@@ -69,7 +69,7 @@ export default function Hero({ onStart }) {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1, duration: 1 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        className="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
       >
         <span className="text-[10px] uppercase tracking-widest text-slate-500 font-bold">Cuộn để bắt đầu</span>
         <div className="w-[1px] h-12 bg-gradient-to-b from-accent-cyan/50 to-transparent" />

@@ -60,7 +60,7 @@ export default function GameArena() {
         viewport={{ once: true }}
         className="w-full max-w-7xl relative z-10"
       >
-        <div className="text-center mb-20">
+        <div className="text-center mb-12 md:mb-20">
           <motion.div
             animate={{ scale: [1, 1.05, 1] }}
             transition={{ duration: 2, repeat: Infinity }}
@@ -70,10 +70,10 @@ export default function GameArena() {
             Vùng Chiến Sự: Arena Độc Quyền
           </motion.div>
           
-          <h2 className="text-5xl md:text-8xl font-black mb-8 text-white tracking-tighter drop-shadow-[0_0_20px_rgba(239,68,68,0.3)]">
+          <h2 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black mb-4 md:mb-8 text-white tracking-tighter drop-shadow-[0_0_20px_rgba(239,68,68,0.3)]">
             Đại Chiến <span className="text-red-600">Boss</span>
           </h2>
-          <p className="text-slate-400 max-w-2xl mx-auto text-lg md:text-xl font-medium leading-relaxed">
+          <p className="text-slate-400 max-w-2xl mx-auto text-sm md:text-lg lg:text-xl font-medium leading-relaxed px-2">
             Vận dụng toàn bộ vũ khí lý luận đã học để giải mã mâu thuẫn và chiến thắng 3 giai đoạn tiến hóa của độc quyền.
           </p>
         </div>
@@ -87,12 +87,12 @@ export default function GameArena() {
           <div className="absolute bottom-0 right-0 w-24 h-24 border-b border-r border-red-600/30 rounded-br-3xl m-2 md:m-4 pointer-events-none z-20" />
 
           {/* Embedded Game UI */}
-          <div className="py-12 px-4 md:px-12 flex items-center justify-center bg-black/40">
+          <div className="py-8 md:py-12 px-3 sm:px-6 md:px-12 flex items-center justify-center bg-black/40">
              <Game />
           </div>
         </div>
         
-        <div className="mt-16 flex justify-center gap-10 text-slate-600 text-[10px] font-black tracking-[0.4em] uppercase opacity-50">
+        <div className="mt-10 md:mt-16 flex justify-center gap-6 md:gap-10 text-slate-600 text-[10px] font-black tracking-[0.3em] md:tracking-[0.4em] uppercase opacity-50 flex-wrap px-4">
           <span>Phase 03: Global Dominance</span>
           <span>•</span>
           <span>Educational Battle 2026</span>

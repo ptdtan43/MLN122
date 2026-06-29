@@ -47,7 +47,7 @@ const CHARACTERISTICS = [
 
 export default function BentoGrid() {
   return (
-    <section className="py-32 px-6 md:px-24 relative overflow-hidden">
+    <section className="py-20 md:py-32 px-4 sm:px-8 md:px-16 lg:px-24 relative overflow-hidden">
       {/* Background Decorative Element */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(139,92,246,0.03)_0%,transparent_70%)] pointer-events-none" />
 
@@ -62,15 +62,15 @@ export default function BentoGrid() {
           <span className="w-1 h-1 rounded-full bg-accent-cyan" />
           Section 4.2: Đặc điểm kinh tế
         </div>
-        <h2 className="text-4xl md:text-6xl lg:text-7xl font-black mb-8 leading-tight">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black mb-6 md:mb-8 leading-tight">
           5 Đặc Điểm Kinh Tế<br /><span className="text-gradient-white">Của Độc Quyền</span>
         </h2>
-        <p className="text-slate-400 max-w-2xl mx-auto text-lg md:text-xl leading-relaxed">
+        <p className="text-slate-400 max-w-2xl mx-auto text-base md:text-lg lg:text-xl leading-relaxed">
           V.I. Lênin đã chỉ ra những biến đổi cốt lõi trong cấu trúc của CNTB khi chuyển mình sang giai đoạn đế quốc chủ nghĩa.
         </p>
       </motion.div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto relative z-10">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-8 max-w-7xl mx-auto relative z-10">
         {CHARACTERISTICS.map((item, index) => (
           <motion.div
             key={item.id}
@@ -78,25 +78,25 @@ export default function BentoGrid() {
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
             viewport={{ once: true }}
-            className={`group glass-card p-10 relative overflow-hidden flex flex-col justify-between ${item.className} glass-card-hover border-white/5 hover:border-white/20`}
+            className={`group glass-card p-6 sm:p-8 md:p-10 relative overflow-hidden flex flex-col justify-between ${item.className} glass-card-hover border-white/5 hover:border-white/20`}
           >
             {/* Hover Glow Effect */}
             <div className={`absolute -top-24 -right-24 w-64 h-64 blur-[100px] rounded-full transition-opacity opacity-0 group-hover:opacity-40 pointer-events-none ${item.glow}`} />
             
             <div className="relative z-10">
-              <div className="mb-10 p-5 bg-white/5 rounded-2xl w-fit group-hover:scale-110 group-hover:bg-white/10 transition-all duration-500 border border-white/5">
+              <div className="mb-6 md:mb-10 p-4 md:p-5 bg-white/5 rounded-2xl w-fit group-hover:scale-110 group-hover:bg-white/10 transition-all duration-500 border border-white/5">
                 {item.icon}
               </div>
               
-              <h3 className="text-2xl md:text-3xl font-bold mb-5 text-white group-hover:text-accent-cyan transition-colors duration-300">
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-3 md:mb-5 text-white group-hover:text-accent-cyan transition-colors duration-300">
                 {item.title}
               </h3>
-              <p className="text-slate-400 text-base md:text-lg leading-relaxed font-medium">
+              <p className="text-slate-400 text-sm md:text-base lg:text-lg leading-relaxed font-medium">
                 {item.desc}
               </p>
             </div>
             
-            <div className="mt-12 flex items-center gap-3 text-[10px] font-bold tracking-[0.2em] text-slate-500 uppercase group-hover:text-slate-300 transition-colors">
+            <div className="mt-8 md:mt-12 flex items-center gap-3 text-[10px] font-bold tracking-[0.2em] text-slate-500 uppercase group-hover:text-slate-300 transition-colors">
               <div className="w-8 h-[1px] bg-slate-800 group-hover:bg-accent-cyan transition-colors" />
               Lenin Detail 0{item.id}
             </div>

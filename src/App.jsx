@@ -55,7 +55,7 @@ export default function App() {
       </main>
       
       {/* Footer / Knowledge Credits */}
-      <footer className="relative py-24 text-center border-t border-white/5 bg-black/80 backdrop-blur-md">
+      <footer className="relative py-16 md:py-24 text-center border-t border-white/5 bg-black/80 backdrop-blur-md">
         <div className="max-w-4xl mx-auto px-6 relative z-10">
           <motion.div
             initial={{ opacity: 0 }}
@@ -72,7 +72,7 @@ export default function App() {
               Thiết kế bởi Senior UX Presentation Engine.
             </p>
             
-            <div className="flex items-center gap-10 text-[10px] md:text-xs font-black tracking-[0.4em] text-slate-700 uppercase">
+            <div className="flex flex-wrap items-center justify-center gap-4 md:gap-10 text-[10px] md:text-xs font-black tracking-[0.3em] md:tracking-[0.4em] text-slate-700 uppercase">
               <span>Hà Nội</span>
               <span className="w-1 h-1 rounded-full bg-slate-800" />
               <span>Chương 04</span>
