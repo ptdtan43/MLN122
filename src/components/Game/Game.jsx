@@ -111,12 +111,22 @@ export default function Game() {
 
     const phase = PHASES[phaseIdx];
 
+    const pushLog = (newLines) => {
+        const newObjs = newLines.map(text => ({ id: Date.now() + Math.random(), text }));
+        setLog(prev => [...newObjs, ...prev]);
+        newObjs.forEach(obj => {
+            setTimeout(() => {
+                setLog(prev => prev.filter(l => l.id !== obj.id));
+            }, 6000);
+        });
+    };
+
     const startGame = (e) => {
         e.preventDefault();
         if (!teamName.trim()) return;
         setGameState('PLAYING');
         drawCards(4, true);
-        setLog([{ id: Math.random(), text: `Trận đấu bắt đầu! Nhóm [${teamName}] khai chiến — ${PHASES[0].name} (${PHASES[0].maxHP} HP).` }]);
+        pushLog([`Trận đấu bắt đầu! Nhóm [${teamName}] khai chiến — ${PHASES[0].name} (${PHASES[0].maxHP} HP).`]);
     };
 
     const drawCards = (count, reset = false) => {
@@ -201,15 +211,14 @@ export default function Game() {
                 setPlayerHP(healed);
                 setAccum(0);
                 setTurnCount((p) => p + 1);
-                const logObjs = lines.reverse().map(l => ({ id: Math.random(), text: l }));
-                setLog((prev) => [...logObjs, ...prev]);
+                pushLog(lines.reverse());
                 drawCards(1);
                 return;
             } else {
                 setBossHP(0);
                 setGameState('WON');
                 const winMsg = `🎉 Nhóm ${teamName} đã đánh bại cả 3 giai đoạn độc quyền sau ${turnCount + 1} lượt!`;
-                setLog((prev) => [{ id: Math.random(), text: winMsg }, { id: Math.random(), text: lines[0] }, ...prev]);
+                pushLog([winMsg, lines[0]]);
                 return;
             }
         }
@@ -232,8 +241,7 @@ export default function Game() {
             setPlayerHP(0);
             setGameState('LOST');
             const lostMsg = `💀 Phe ta bị thôn tính ở ${phase.name}. Ôn lại 4.1–4.2 và thử lại!`;
-            const logObjs = lines.reverse().map(l => ({ id: Math.random(), text: l }));
-            setLog((prev) => [{ id: Math.random(), text: lostMsg }, ...logObjs, ...prev]);
+            pushLog([lostMsg, ...lines.reverse()]);
             return;
         }
 
@@ -241,8 +249,7 @@ export default function Game() {
         setPlayerHP(newPlayerHP);
         setAccum(newAccum);
         setTurnCount((p) => p + 1);
-        const logObjs = lines.reverse().map(l => ({ id: Math.random(), text: l }));
-        setLog((prev) => [...logObjs, ...prev]);
+        pushLog(lines.reverse());
         drawCards(1);
     };
 
