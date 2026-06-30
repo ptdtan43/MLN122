@@ -319,17 +319,18 @@ export default function Game() {
                     {/* HAND */}
                     <div className="space-y-2">
                         <h3 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Vũ khí lý luận (chọn 1 để đánh)</h3>
-                        <div className="grid grid-cols-1 gap-2 max-h-48 sm:max-h-56 overflow-y-auto pr-1">
+                        <div className="grid grid-cols-1 gap-2">
                             {hand.map((card) => (
                                 <button key={card.instanceId} onClick={() => playCard(card)}
-                                    className={`w-full text-left p-3 sm:p-3 rounded-xl transition transform hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-between bg-gradient-to-r ${card.color} text-white shadow-md min-h-[52px]`}>
-                                    <div className="pr-2">
-                                        <div className="font-bold text-sm flex items-center gap-1.5">
-                                            <span className="bg-black/30 text-[9px] px-1.5 py-0.5 rounded">{card.tag}</span>{card.name}
+                                    className={`w-full text-left p-3 sm:p-3 rounded-xl transition transform hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-between bg-gradient-to-r ${card.color} text-white shadow-md min-h-[60px]`}>
+                                    <div className="pr-2 flex-1">
+                                        <div className="font-bold text-sm flex items-center gap-1.5 flex-wrap">
+                                            <span className="bg-black/30 text-[9px] px-1.5 py-0.5 rounded">{card.tag}</span>
+                                            <span>{card.name}</span>
                                         </div>
-                                        <div className="text-[10px] opacity-90 font-light mt-0.5">{card.desc}</div>
+                                        <div className="text-[10px] opacity-90 font-light mt-0.5 leading-relaxed">{card.desc}</div>
                                     </div>
-                                    <span className="bg-black/25 text-xs px-2 py-1 rounded-md font-mono font-bold shrink-0">
+                                    <span className="bg-black/25 text-xs px-2 py-1 rounded-md font-mono font-bold shrink-0 ml-2">
                                         {card.type === 'heal' ? `+${card.value}` : `-${card.value}`}
                                     </span>
                                 </button>

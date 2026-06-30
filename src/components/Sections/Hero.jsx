@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 export default function Hero({ onStart }) {
   return (
-    <section className="relative h-screen flex flex-col items-center justify-center text-center px-4 overflow-hidden">
+    <section className="relative min-h-[100svh] flex flex-col items-center justify-center text-center px-4 overflow-hidden pb-32 pt-20">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
@@ -20,7 +20,7 @@ export default function Hero({ onStart }) {
           Giáo trình Kinh tế Chính trị Mác-Lênin
         </motion.div>
         
-        <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-black text-gradient-white leading-[0.9] mb-6 md:mb-8 select-none">
+        <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-extrabold text-gradient-white leading-[1] mb-6 md:mb-8 select-none tracking-tight">
           Đại Chiến<br />Độc Quyền
         </h1>
         

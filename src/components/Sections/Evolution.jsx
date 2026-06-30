@@ -42,6 +42,16 @@ export default function Evolution() {
     return () => clearInterval(timer.current);
   }, [paused]);
 
+  const prevSlide = () => {
+    setDir(-1);
+    setActive(prev => (prev === 0 ? STAGES.length - 1 : prev - 1));
+  };
+
+  const nextSlide = () => {
+    setDir(1);
+    setActive(prev => (prev + 1) % STAGES.length);
+  };
+
   const stage = STAGES[active];
 
   return (
@@ -62,7 +72,7 @@ export default function Evolution() {
             4.1 Quá trình chuyển hóa
           </span>
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-3 mt-3">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black leading-[1.08]">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.1] tracking-tight">
               Sự Tiến Hoá<br />Của Cạnh Tranh
             </h2>
             <p className="text-slate-400 text-sm md:text-[15px] max-w-md leading-relaxed md:text-right">
@@ -123,8 +133,8 @@ export default function Evolution() {
             ))}
           </div>
 
-          {/* Card — chiều cao cố định, bên trong dùng grid 2 phần */}
-          <div className="relative h-[400px] sm:h-[440px] md:h-[480px]">
+          {/* Card — chiều cao linh hoạt hơn để tránh đè chữ */}
+          <div className="relative h-[460px] sm:h-[480px] md:h-[480px] group/slider">
             <AnimatePresence mode="wait" custom={dir}>
               <motion.div
                 key={active}
@@ -175,31 +185,38 @@ export default function Evolution() {
                 </div>
               </motion.div>
             </AnimatePresence>
+
+            {/* Left Button */}
+            <button
+              onClick={() => { setPaused(true); prevSlide(); }}
+              aria-label="Previous"
+              className="absolute left-2 md:-left-6 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 bg-black/60 hover:bg-black/90 text-white rounded-full flex items-center justify-center border border-white/15 opacity-100 md:opacity-0 group-hover/slider:opacity-100 transition-all z-20 backdrop-blur-sm"
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+
+            {/* Right Button */}
+            <button
+              onClick={() => { setPaused(true); nextSlide(); }}
+              aria-label="Next"
+              className="absolute right-2 md:-right-6 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 bg-black/60 hover:bg-black/90 text-white rounded-full flex items-center justify-center border border-white/15 opacity-100 md:opacity-0 group-hover/slider:opacity-100 transition-all z-20 backdrop-blur-sm"
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
           </div>
 
           {/* Controls */}
-          <div className="flex items-center justify-center gap-2.5 mt-6">
+          <div className="flex items-center justify-center gap-2.5 mt-6 md:mt-8">
             {STAGES.map((_, i) => (
               <button
                 key={i}
                 onClick={() => go(i)}
                 aria-label={`Giai đoạn ${i + 1}`}
                 className={`rounded-full transition-all duration-300 ${
-                  i === active ? 'w-7 h-2 bg-accent-cyan' : 'w-2 h-2 bg-white/15 hover:bg-white/30'
+                  i === active ? 'w-8 h-2.5 bg-accent-cyan' : 'w-2.5 h-2.5 bg-white/15 hover:bg-white/30'
                 }`}
               />
             ))}
-            <button
-              onClick={() => setPaused(p => !p)}
-              aria-label={paused ? 'Tiếp tục' : 'Tạm dừng'}
-              className="ml-3 w-7 h-7 grid place-items-center rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-colors text-slate-400 hover:text-white"
-            >
-              {paused ? (
-                <svg width="9" height="10" viewBox="0 0 9 10" fill="currentColor"><path d="M0 0.5L9 5L0 9.5V0.5Z" /></svg>
-              ) : (
-                <svg width="8" height="10" viewBox="0 0 8 10" fill="currentColor"><rect width="2.5" height="10" rx="0.75" /><rect x="5.5" width="2.5" height="10" rx="0.75" /></svg>
-              )}
-            </button>
           </div>
         </motion.div>
       </div>
